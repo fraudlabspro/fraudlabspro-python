@@ -12,10 +12,10 @@ api_key = 'GR3SEAWKYH3ZFJGKQTWXY20TB3FCW74C'
 """
 order_details_variables = {
 	'key': api_key,
-	'ip': '175.138.99.191',
+	'ip': '146.112.62.105',
 	'order': {
 		'order_id': '67398', 
-		'currency': 'MYR',
+		'currency': 'USD',
 		'amount': '42',
 		'quantity': 1, 
 		'paymentMethod': 'creditcard'
@@ -27,19 +27,19 @@ order_details_variables = {
 		'firstName': 'Hector',
 		'lastName': 'Henderson',
 		'email': 'hh5566@gmail.com',
-		'phone': '011-435465467',
-		'address': '1-11, Lorong Baiduri 9, Taman Dedap',
-		'city': 'Butterworth',
-		'state': 'Penang',
-		'postcode': '13400',
-		'country': 'MY',
+		'phone': '561-628-8674',
+		'address': '1766 Powder House Road',
+		'city': 'West Palm Beach',
+		'state': 'FL',
+		'postcode': '33401',
+		'country': 'US',
 	},
 	'shipping': {
-		'address': '1-11, Lorong Baiduri 9, Taman Dedap',
-		'city'   : 'Butterworth',
-		'state'  : 'Penang',
-		'postcode': '13400',
-		'country': 'MY',
+		'address': '4469 Chestnut Street',
+		'city'   : 'Tampa',
+		'state'  : 'FL',
+		'postcode': '33602',
+		'country': 'US',
 	}
 }
 print(Order.validate(order_details_variables))
