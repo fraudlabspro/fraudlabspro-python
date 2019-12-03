@@ -11,9 +11,7 @@
 
 import urllib.parse
 import urllib.request
-import json
-import hashlib
-import re
+import json, hashlib, re
 from decimal import Decimal
 
 """
@@ -176,7 +174,7 @@ class Order:
 			if 'city' in dictionary['shipping']:
 				ship_city = dictionary['shipping']['city']
 			else:
-				ship_city : ''
+				ship_city = ''
 			if 'state' in dictionary['shipping']:
 				ship_state = dictionary['shipping']['state']
 			else:
