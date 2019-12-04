@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
 	long_description = fh.read()
 
 setuptools.setup(
-	name="fraudlabspro-python",
-	version="1.0.2",
+	name="fraudlabspro",
+	version="1.1.0",
 	author="FraudLabs Pro",
 	author_email="support@fraudlabspro.com",
 	description="A Python module enables user to easily implement fraud detection feature into their solution using the API from https://www.fraudlabspro.com.",

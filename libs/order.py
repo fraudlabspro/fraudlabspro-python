@@ -13,6 +13,7 @@ import urllib.parse
 import urllib.request
 import json, hashlib, re
 from decimal import Decimal
+from decimal import ROUND_UP
 
 """
  # This function is to hashes a string to protect its real value.
