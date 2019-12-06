@@ -1,6 +1,6 @@
 # import SDK to use the function
-from libs.order import Order
-from libs.smsverification import SMSVerification
+from fraudlabspro.order import Order
+from fraudlabspro.smsverification import SMSVerification
 
  # Configure your API key
 api_key = 'YOUR_API_KEY'

@@ -58,7 +58,7 @@ This module requires API key to function. You may subscribe a free API key at ht
 
 ```python
  # import SDK to use the function
-from libs.order import Order
+from fraudlabspro.order import Order
 
  # Configure your API key
 api_key = 'YOUR_API_KEY'
@@ -114,7 +114,7 @@ result = Order.validate(dict1)
 
 ```python
  # import SDK to use the function
-from libs.order import Order
+from fraudlabspro.order import Order
  
  # Configure your API key
 api_key = 'YOUR_API_KEY'
@@ -144,7 +144,7 @@ result = Order.get_transaction(get_transaction_variables)
 
 ```python
  # import SDK to use the function
-from libs.order import Order
+from fraudlabspro.order import Order
  
  # Configure your API key
 api_key = 'YOUR_API_KEY'
@@ -177,7 +177,7 @@ Order.feedback(feedback_variables)
 
 ```python
  # import SDK to use the function
-from libs.smsverification import SMSVerification
+from fraudlabspro.smsverification import SMSVerification
  
  # Configure your API key
 api_key = 'YOUR_API_KEY'
@@ -205,7 +205,7 @@ result = SMSVerification.send_sms(sms_verification_variables)
 
 ```python
  # import SDK to use the function
-from libs.smsverification import SMSVerification
+from fraudlabspro.smsverification import SMSVerification
  
  # Configure your API key
 api_key = 'YOUR_API_KEY'
