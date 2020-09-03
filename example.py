@@ -78,6 +78,7 @@ sms_verification_variables = {
 	'tel': '+15616288674',
 	'country_code': 'US',
 	'mesg': 'Your OTP for the transaction is <otp>.',
+	'otp_timeout': 3600,
 }
 print(SMSVerification.send_sms(sms_verification_variables))
 

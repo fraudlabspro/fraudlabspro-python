@@ -2,10 +2,10 @@
  # FraudLabsPro Python Library
  # Implements fraud checking solution using FraudLabs Pro service.
  # API key is required, and if you do not have an API key, you may sign up free
- # at at http://www.fraudlabspro.com
+ # at at https://www.fraudlabspro.com
  #
- # @copyright 2018 FraudLabs Pro
- # http://www.fraudlabspro.com
+ # @copyright 2020 FraudLabs Pro
+ # https://www.fraudlabspro.com
 
 """
 
@@ -41,12 +41,17 @@ class SMSVerification:
 			message = send_sms_variables['mesg']
 		else:
 			return 'Message is required.'
+		if 'otp_timeout' in send_sms_variables:
+			otp_timeout = send_sms_variables['otp_timeout']
+		else:
+			otp_timeout = 3600
 		send_sms_variables_list = {
 			'key': apikey,
 			'format': 'json',
 			'tel': tel_no,
 			'country_code': country_code,
 			'mesg': message,
+			'otp_timeout': otp_timeout,
 		}
 		url = 'https://api.fraudlabspro.com/v1/verification/send'
 		data = urllib.parse.urlencode(send_sms_variables_list)
