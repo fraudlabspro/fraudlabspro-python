@@ -186,7 +186,7 @@ api_key = 'YOUR_API_KEY'
  # Send SMS verification
 sms_verification_variables = {
 	'key': api_key,
-	'tel': '+15616288674',
+	'tel': '+123456789',
 	'country_code': 'US',
 	'mesg': 'Your OTP for the transaction is <otp>.',
 	'otp_timeout': 3600,
