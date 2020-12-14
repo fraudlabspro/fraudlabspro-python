@@ -5,7 +5,7 @@ with open("readme.md", "r") as fh:
 
 setuptools.setup(
 	name="fraudlabspro-python",
-	version="1.2.0",
+	version="1.3.0",
 	author="FraudLabs Pro",
 	author_email="support@fraudlabspro.com",
 	description="A Python module enables user to easily implement fraud detection feature into their solution using the API from https://www.fraudlabspro.com.",
@@ -13,6 +13,7 @@ setuptools.setup(
 	long_description_content_type="text/markdown",
 	url="https://www.fraudlabspro.com",
 	packages=setuptools.find_packages(),
+	tests_require=[pytest>=3.0.6],
 	classifiers=(
 		"Development Status :: 5 - Production/Stable",
 		"Intended Audience :: Developers",
