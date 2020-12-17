@@ -25,6 +25,16 @@ def testapikeyexist(global_data, capsys):
     else:
         assert global_data["apikey"] != "YOUR_API_KEY"
 
+def testfunctionexist():
+    errors = []
+    functions_list = ['validate', 'get_transaction', 'feedback']
+    for x in range(len(functions_list)): 
+        # assert hasattr(Order, functions_list[x]) == True, "Function did not exist."
+        if (hasattr(Order, functions_list[x]) == False):
+            errors.append("Function " + functions_list[x] + " did not exist.")
+    # assert no error message has been registered, else print messages
+    assert not errors, "errors occured:\n{}".format("\n".join(errors))
+
 def testvalidateorder(global_data):
     order_details_variables = {
         'key': global_data["apikey"],
