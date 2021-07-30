@@ -44,7 +44,7 @@ This module requires API key to function. You may subscribe a free API key at ht
 | order->quantity      | integer       | Total quantity of the transaction.                           |
 | order->currency      | string        | Currency code used in the transaction. It requires the input of ISO-4217 (3 characters) currency code, e.g. USD for US Dollar. Please refer to [Currency Codes](https://www.fraudlabspro.com/developer/reference/currency-codes) for complete list. |
 | order->department    | string        | Merchant identifier to uniquely identify a product or service department. |
-| order->paymentMethod | string        | Payment mode of transaction. Valid values: creditcard, affirm, paypal, googlecheckout, bitcoin, cod, moneyorder, wired, bankdeposit, elviauthorized, paymitco, cybersource, sezzle, viabill, amazonpay, pmnts_gateway, giftcard, others.   |
+| order->paymentMethod | string        | Payment mode of transaction. Please see references section.  |
 | card->number         | string        | Billing credit card number or BIN number.                    |
 | card->avs            | string        | The single character AVS result returned by the credit card processor. Please refer to [AVS & CVV2 Response Codes](https://www.fraudlabspro.com/developer/reference/avs-and-cvv2-response-codes) for details. |
 | card->cvv            | string        | The single character CVV2 result returned by the credit card processor. Please refer to [AVS & CVV2 Response Codes](https://www.fraudlabspro.com/developer/reference/avs-and-cvv2-response-codes) for details. |
@@ -58,14 +58,14 @@ This module requires API key to function. You may subscribe a free API key at ht
 
 ```python
  # import SDK to use the function
-from fraudlabspro.order import Order
+from fraudlabspro.fraudvalidation import FraudValidation
 
  # Configure your API key
 api_key = 'YOUR_API_KEY'
+fraud_validation = FraudValidation(api_key)
 
  # Order Details
 dict1 = {
-	'key': api_key,
 	'ip': '146.112.62.105',
 	'order': {
 		'order_id': '67398', 
@@ -98,7 +98,7 @@ dict1 = {
 }
 
  # Sends the order details to FraudLabs Pro
-result = Order.validate(dict1)
+result = fraud_validation.validate(dict1)
 ```
 
 
@@ -114,10 +114,11 @@ result = Order.validate(dict1)
 
 ```python
  # import SDK to use the function
-from fraudlabspro.order import Order
- 
+from fraudlabspro.fraudvalidation import FraudValidation
+
  # Configure your API key
 api_key = 'YOUR_API_KEY'
+fraud_validation = FraudValidation(api_key)
 
  # Values to get transaction details
 get_transaction_variables = {
@@ -127,7 +128,7 @@ get_transaction_variables = {
 }
 
  # Send the values to FraudLabs Pro
-result = Order.get_transaction(get_transaction_variables)
+result = fraud_validation.get_transaction(get_transaction_variables)
 ```
 
 
@@ -144,10 +145,11 @@ result = Order.get_transaction(get_transaction_variables)
 
 ```python
  # import SDK to use the function
-from fraudlabspro.order import Order
- 
+from fraudlabspro.fraudvalidation import FraudValidation
+
  # Configure your API key
 api_key = 'YOUR_API_KEY'
+fraud_validation = FraudValidation(api_key)
 
  # Set feedback of the particular order
 feedback_variables = {
@@ -158,7 +160,7 @@ feedback_variables = {
 	'notes': 'This is for testing purpose.',
 }
 
-Order.feedback(feedback_variables)
+result = fraud_validation.feedback(feedback_variables)
 ```
 
 
@@ -182,6 +184,7 @@ from fraudlabspro.smsverification import SMSVerification
  
  # Configure your API key
 api_key = 'YOUR_API_KEY'
+sms_validation = SMSVerification(api_key)
 
  # Send SMS verification
 sms_verification_variables = {
@@ -191,7 +194,7 @@ sms_verification_variables = {
 	'mesg': 'Your OTP for the transaction is <otp>.',
 	'otp_timeout': 3600,
 }
-result = SMSVerification.send_sms(sms_verification_variables)
+result = sms_validation.send_sms(sms_verification_variables)
 ```
 
 
@@ -211,6 +214,7 @@ from fraudlabspro.smsverification import SMSVerification
  
  # Configure your API key
 api_key = 'YOUR_API_KEY'
+sms_validation = SMSVerification(api_key)
 
  # Get SMS verification result
 verify_sms_variables = {
@@ -218,7 +222,7 @@ verify_sms_variables = {
 	'tran_id': 'UNIQUE_TRANS_ID',
 	'otp': 'OTP_RECEIVED',
 }
-result = SMSVerification.verify_sms(verify_sms_variables)
+result = sms_validation.verify_sms(verify_sms_variables)
 ```
 
 

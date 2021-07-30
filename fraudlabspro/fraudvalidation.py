@@ -31,18 +31,20 @@ class HashText:
  # Validates order for possible fraud and feedback user decision.
 """
 
-class Order:
+class FraudValidation:
+    def __init__(self, apikey):
+        self.apikey = apikey
     """
     # Validate order for possible fraud. Return the result in json format.
     #
     # Result will be return in json format.
     """
-    def validate(dictionary):
+    def validate(self, dictionary):
         # Capture variable and store in local variable
-        if 'key' in dictionary:
-            api_key = dictionary['key']
-        else:
-            return ('The API key is required. Please obtain through here: https://www.fraudlabspro.com/pricing')
+        # if 'key' in dictionary:
+            # api_key = dictionary['key']
+        # else:
+            # return ('The API key is required. Please obtain through here: https://www.fraudlabspro.com/pricing')
         #  The IP address.
         if 'ip' in dictionary:
             ipaddr = dictionary['ip']
@@ -228,7 +230,7 @@ class Order:
             ship_country = ''
         #  Put all the variables into the array before send to the API
         validate_variable_list = {
-                    'key': api_key,
+                    'key': self.apikey,
                     'ip': ipaddr,
                     'format': 'json',
                     'source': 'FraudLabsPro Python SDK',
@@ -284,11 +286,11 @@ class Order:
      #
      # Result will be return in json format.
     """
-    def feedback(feedback_variables):
-        if 'key' in feedback_variables:
-            apikey = feedback_variables['key']
-        else:
-            return 'The API key is required. Please obtain through here: https://www.fraudlabspro.com/pricing'
+    def feedback(self, feedback_variables):
+        # if 'key' in feedback_variables:
+            # apikey = feedback_variables['key']
+        # else:
+            # return 'The API key is required. Please obtain through here: https://www.fraudlabspro.com/pricing'
         if 'id' in feedback_variables:
             transaction_id = feedback_variables['id']
         else:
@@ -302,7 +304,7 @@ class Order:
         else:
             notes = ''
         feedback_variables_list = {
-            'key': apikey,
+            'key': self.apikey,
             'format': 'json',
             'id': transaction_id,
             'action': action,
@@ -325,11 +327,11 @@ class Order:
      #
      # Result will be return in json format.
     """
-    def get_transaction(get_transaction_variables):
-        if 'key' in get_transaction_variables:
-            api_key = get_transaction_variables['key']
-        else:
-            return('The API key is required. Please obtain through here: https://www.fraudlabspro.com/pricing')
+    def get_transaction(self, get_transaction_variables):
+        # if 'key' in get_transaction_variables:
+            # api_key = get_transaction_variables['key']
+        # else:
+            # return('The API key is required. Please obtain through here: https://www.fraudlabspro.com/pricing')
         if 'id' in get_transaction_variables:
             fraud_labs_pro_id = get_transaction_variables['id']
         else:
@@ -339,7 +341,7 @@ class Order:
         else:
             return "Your ID type is empty!"
         get_transaction_variable_list = {
-            'key': api_key,
+            'key': self.apikey,
             'format': 'json',
             'id': fraud_labs_pro_id,
             'id_type': id_type,

@@ -1,17 +1,19 @@
 # import SDK to use the function
-from fraudlabspro.order import Order
+from fraudlabspro.fraudvalidation import FraudValidation
 from fraudlabspro.smsverification import SMSVerification
 
  # Configure your API key
 api_key = 'YOUR_API_KEY'
 
+# validation = fraudlabspro.fraudvalidation.FraudValidation(api_key)
+# validation = fraudlabspro.FraudValidation(api_key)
+fraud_validation = FraudValidation(api_key)
 
 """
 # Here is an example to validate order details.
 # Set your variables here and then pass the values through the Python library.
 """
 order_details_variables = {
-	'key': api_key,
 	'ip': '146.112.62.105',
 	'order': {
 		'order_id': '67398', 
@@ -42,8 +44,7 @@ order_details_variables = {
 		'country': 'US',
 	}
 }
-print(Order.validate(order_details_variables))
-
+print(fraud_validation.validate(order_details_variables))
 
 """
 # Here is an example to get transaction details.
@@ -52,44 +53,42 @@ print(Order.validate(order_details_variables))
 # type is id type, which define either the id is FraudLabsPrp::FLP_ID or FraudLabsPro::ORDER_ID.
 """
 get_transaction_variables = {
-	'key': api_key,
 	'id': '20180705-WISXW2',
 	'id_type': 'FraudLabsPro::FLP_ID'
 }
-print(Order.get_transaction(get_transaction_variables))
+print(fraud_validation.get_transaction(get_transaction_variables))
 
 """
  # Here is example of send feecback of either approve or reject this particular order.
 """
 feedback_variables = {
-	'key': api_key,
 	'id': '20180705-WISXW2',
 	# Three actions available: APPROVE, REJECT, REJECT_BLACKLIST
 	'action': 'APPROVE',
 	'notes': 'This is for testing purpose.',
 }
-print(Order.feedback(feedback_variables))
+print(fraud_validation.feedback(feedback_variables))
+
+sms_validation = SMSVerification(api_key)
 
 """
  # Here is example of verify the valid order by send the SMS to customer.
 """
 sms_verification_variables = {
-	'key': api_key,
 	'tel': '+15616288674',
 	'country_code': 'US',
 	'mesg': 'Your OTP for the transaction is <otp>.',
 	'otp_timeout': 3600,
 }
-print(SMSVerification.send_sms(sms_verification_variables))
+print(sms_validation.send_sms(sms_verification_variables))
 
 """
  # Here is example of check the SMS verification result of the particular order.
 """
 verify_sms_variables = {
-	'key': api_key,
 	'tran_id': 'UNIQUE_TRANS_ID',
 	'otp': 'OTP_RECEIVED',
 }
-print(SMSVerification.verify_sms(verify_sms_variables))
+print(sms_validation.verify_sms(verify_sms_variables))
 
 
