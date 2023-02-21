@@ -49,6 +49,8 @@ class SMSVerification:
             otp_timeout = 3600
         send_sms_variables_list = {
             'key': self.apikey,
+            'source': 'sdk-python',
+            'source_version': '2.0.1',
             'format': 'json',
             'tel': tel_no,
             'country_code': country_code,

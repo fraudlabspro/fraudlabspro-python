@@ -233,8 +233,8 @@ class FraudValidation:
                     'key': self.apikey,
                     'ip': ipaddr,
                     'format': 'json',
-                    'source': 'FraudLabsPro Python SDK',
-                    'source_version': '3.6.0',
+                    'source': 'sdk-python',
+                    'source_version': '2.0.1',
                     'flp_check_sum': flp_check_sum,
                     #  order information
                     'user_order_id': user_order_id,
