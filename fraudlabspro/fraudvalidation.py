@@ -4,7 +4,7 @@
  # API key is required, and if you do not have an API key, you may sign up free
  # at at https://www.fraudlabspro.com
  #
- # @copyright 2020 FraudLabs Pro
+ # @copyright 2024 FraudLabs Pro
  # https://www.fraudlabspro.com
 
 """
