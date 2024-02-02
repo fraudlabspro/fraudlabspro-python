@@ -16,9 +16,9 @@ def testsendsms(global_data):
     }
     result = json.loads(sms_validation.send_sms(sms_verification_variables))
     if (global_data["apikey"] == 'YOUR_API_KEY'):
-        assert result['error'] == "API key not found."
+        assert result['error']['error_message'] == "INVALID API KEY"
     else:
-        assert result['error'] == "Invalid phone number."
+        assert result['error']['error_message'] == "INVALID PHONE NUMBER"
 
 
 def testverifysms(global_data):
@@ -30,9 +30,9 @@ def testverifysms(global_data):
     }
     result = json.loads(sms_validation.verify_sms(verify_sms_variables))
     if (global_data["apikey"] == 'YOUR_API_KEY'):
-        assert result['error'] == "API key not found."
+        assert result['error']['error_message'] == "INVALID API KEY"
     else:
-        assert result['error'] == "Invalid OTP."
+        assert result['error']['error_message'] == "INVALID OTP"
 
 def testfunctionexist():
     sms_validation = SMSVerification(global_data["apikey"])

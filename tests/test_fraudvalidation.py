@@ -15,7 +15,7 @@ def testinvalidapikey(global_data):
         'ip': '8.8.8.8',
     }
     result = json.loads(fraud_validation.validate(order_details_variables))
-    assert result['fraudlabspro_message'] == 'INVALID API KEY'
+    assert result['error']['error_message'] == 'INVALID API KEY'
 
 def testapikeyexist(global_data, capsys):
     if (global_data["apikey"] == 'YOUR_API_KEY'):
@@ -46,7 +46,7 @@ def testvalidateorder(global_data):
     }
     result = json.loads(fraud_validation.validate(order_details_variables))
     if (global_data["apikey"] == 'YOUR_API_KEY'):
-        assert result['fraudlabspro_id'] == "NA"
+        assert result['error']['error_message'] == "INVALID API KEY"
     else:
         assert result['ip_country'] == "US"
 
@@ -55,10 +55,10 @@ def testgettransaction(global_data):
     get_transaction_variables = {
 	    # 'key': global_data["apikey"],
 	    'id': '20170906MXFHSTRF',
-	    'id_type': 'FraudLabsPro::FLP_ID'
+	    # 'id_type': 'FraudLabsPro::FLP_ID' # No longer supported in v2
     }
     result = json.loads(fraud_validation.get_transaction(get_transaction_variables))
-    assert result['fraudlabspro_id'] == 'NA'
+    assert result['error']['error_message'] == 'TRANSACTION NOT FOUND'
 
 def testfeedback(global_data):
     fraud_validation = FraudValidation(global_data["apikey"])
@@ -70,6 +70,6 @@ def testfeedback(global_data):
     }
     result = json.loads(fraud_validation.feedback(feedback_variables))
     if (global_data["apikey"] == 'YOUR_API_KEY'):
-        assert result['fraudlabspro_message'] == "INVALID API KEY"
+        assert result['error']['error_message'] == "INVALID API KEY"
     else:
-        assert result['fraudlabspro_message'] == "INVALID TRANSACTION ID"
+        assert result['error']['error_message'] == "INVALID TRANSACTION ID"

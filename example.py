@@ -54,7 +54,7 @@ print(fraud_validation.validate(order_details_variables))
 """
 get_transaction_variables = {
 	'id': '20180705-WISXW2',
-	'id_type': 'FraudLabsPro::FLP_ID'
+	# 'id_type': 'FraudLabsPro::FLP_ID' # No longer supported in v2
 }
 print(fraud_validation.get_transaction(get_transaction_variables))
 

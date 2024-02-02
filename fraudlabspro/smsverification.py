@@ -50,20 +50,25 @@ class SMSVerification:
         send_sms_variables_list = {
             'key': self.apikey,
             'source': 'sdk-python',
-            'source_version': '2.0.1',
+            'source_version': '3.0.0',
             'format': 'json',
             'tel': tel_no,
             'country_code': country_code,
             'mesg': message,
             'otp_timeout': otp_timeout,
         }
-        url = 'https://api.fraudlabspro.com/v1/verification/send'
+        url = 'https://api.fraudlabspro.com/v2/verification/send'
         data = urllib.parse.urlencode(send_sms_variables_list)
         data = data.encode('utf-8')
+        try:
+            request = urllib.request.Request(url, data)
+            with urllib.request.urlopen(request) as response:
+                string = response.read().decode('utf-8')
+            json_obj = json.loads(string)
+        except urllib.error.HTTPError as httpError:
+            error = httpError.read().decode()
+            json_obj = json.loads(error)
         request = urllib.request.Request(url, data)
-        with urllib.request.urlopen(request) as response:
-            string = response.read().decode('utf-8')
-        json_obj = json.loads(string)
         result = json.dumps(json_obj, indent=4)
         return(result)
         
@@ -92,11 +97,15 @@ class SMSVerification:
             'tran_id': transaction_id,
             'otp': otp,
         }
-        url = 'https://api.fraudlabspro.com/v1/verification/result'
+        url = 'https://api.fraudlabspro.com/v2/verification/result'
         url_values = urllib.parse.urlencode(verify_sms_variables_list)
         full_url = url + '?' + url_values
-        data = urllib.request.urlopen(full_url)
-        string = data.read().decode('utf-8')
-        json_obj = json.loads(string)
+        try:
+            data = urllib.request.urlopen(full_url)
+            string = data.read().decode('utf-8')
+            json_obj = json.loads(string)
+        except urllib.error.HTTPError as httpError:
+            error = httpError.read().decode()
+            json_obj = json.loads(error)
         result = json.dumps(json_obj, indent=4)
         return(result)

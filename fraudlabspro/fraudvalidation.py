@@ -234,7 +234,7 @@ class FraudValidation:
                     'ip': ipaddr,
                     'format': 'json',
                     'source': 'sdk-python',
-                    'source_version': '2.0.1',
+                    'source_version': '3.0.0',
                     'flp_check_sum': flp_check_sum,
                     #  order information
                     'user_order_id': user_order_id,
@@ -269,13 +269,17 @@ class FraudValidation:
                     'ship_zip_code': ship_zip_code,
                     'ship_country': ship_country,
                     }
-        url = 'https://api.fraudlabspro.com/v1/order/screen'
+        url = 'https://api.fraudlabspro.com/v2/order/screen'
         data = urllib.parse.urlencode(validate_variable_list)
         data = data.encode('utf-8')
-        request = urllib.request.Request(url, data)
-        with urllib.request.urlopen(request) as response:
-            string = response.read().decode('utf-8')
-        json_obj = json.loads(string)
+        try:
+            request = urllib.request.Request(url, data)
+            with urllib.request.urlopen(request) as response:
+                string = response.read().decode('utf-8')
+            json_obj = json.loads(string)
+        except urllib.error.HTTPError as httpError:
+            error = httpError.read().decode()
+            json_obj = json.loads(error)
         result = json.dumps(json_obj, indent=4)
         if result is None:
             return False
@@ -305,18 +309,23 @@ class FraudValidation:
             notes = ''
         feedback_variables_list = {
             'key': self.apikey,
+            'source_version': '3.0.0',
             'format': 'json',
             'id': transaction_id,
             'action': action,
             'notes': notes,
         }
-        url = 'https://api.fraudlabspro.com/v1/order/feedback'
+        url = 'https://api.fraudlabspro.com/v2/order/feedback'
         data = urllib.parse.urlencode(feedback_variables_list)
         data = data.encode('utf-8')
-        request = urllib.request.Request(url, data)
-        with urllib.request.urlopen(request) as response:
-            string = response.read().decode('utf-8')
-        json_obj = json.loads(string)
+        try:
+            request = urllib.request.Request(url, data)
+            with urllib.request.urlopen(request) as response:
+                string = response.read().decode('utf-8')
+            json_obj = json.loads(string)
+        except urllib.error.HTTPError as httpError:
+            error = httpError.read().decode()
+            json_obj = json.loads(error)
         result = json.dumps(json_obj, indent=4)
         if result is None:
             return False
@@ -336,22 +345,26 @@ class FraudValidation:
             fraud_labs_pro_id = get_transaction_variables['id']
         else:
             return "Your ID is empty!"
-        if 'id_type' in get_transaction_variables:
-            id_type = get_transaction_variables['id_type']
-        else:
-            return "Your ID type is empty!"
+        # if 'id_type' in get_transaction_variables: # No longer supported in v2 API
+            # id_type = get_transaction_variables['id_type']
+        # else:
+            # return "Your ID type is empty!"
         get_transaction_variable_list = {
             'key': self.apikey,
             'format': 'json',
             'id': fraud_labs_pro_id,
             'id_type': id_type,
         }
-        url = 'https://api.fraudlabspro.com/v1/order/result'
+        url = 'https://api.fraudlabspro.com/v2/order/result'
         url_values = urllib.parse.urlencode(get_transaction_variable_list)
         full_url = url + '?' + url_values
-        data = urllib.request.urlopen(full_url)
-        string = data.read().decode('utf-8')
-        json_obj = json.loads(string)
+        try:
+            data = urllib.request.urlopen(full_url)
+            string = data.read().decode('utf-8')
+            json_obj = json.loads(string)
+        except urllib.error.HTTPError as httpError:
+            error = httpError.read().decode()
+            json_obj = json.loads(error)
         result = json.dumps(json_obj, indent=4)
         if result is None:
             return False
