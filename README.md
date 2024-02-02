@@ -110,7 +110,6 @@ result = fraud_validation.validate(dict1)
 | Parameter Name | Parameter Type | Description                                                  |
 | -------------- | -------------- | ------------------------------------------------------------ |
 | $id            | string         | FraudLabs Pro transaction ID or Order ID.                    |
-| $type          | string         | ID type. Either: **FraudLabsPrp::FLP_ID** or **FraudLabsPro::ORDER_ID** |
 
 ```python
  # import SDK to use the function
@@ -122,9 +121,7 @@ fraud_validation = FraudValidation(api_key)
 
  # Values to get transaction details
 get_transaction_variables = {
-	'key': api_key,
 	'id': '20180705-WISXW2',
-	'id_type': 'FraudLabsPro::FLP_ID'
 }
 
  # Send the values to FraudLabs Pro
@@ -153,7 +150,6 @@ fraud_validation = FraudValidation(api_key)
 
  # Set feedback of the particular order
 feedback_variables = {
-	'key': api_key,
 	'id': '20180705-WISXW2',
 	# Three actions available: APPROVE, REJECT, REJECT_BLACKLIST
 	'action': 'APPROVE',
@@ -188,7 +184,6 @@ sms_validation = SMSVerification(api_key)
 
  # Send SMS verification
 sms_verification_variables = {
-	'key': api_key,
 	'tel': '+123456789',
 	'country_code': 'US',
 	'mesg': 'Your OTP for the transaction is <otp>.',
@@ -218,7 +213,6 @@ sms_validation = SMSVerification(api_key)
 
  # Get SMS verification result
 verify_sms_variables = {
-	'key': api_key,
 	'tran_id': 'UNIQUE_TRANS_ID',
 	'otp': 'OTP_RECEIVED',
 }
