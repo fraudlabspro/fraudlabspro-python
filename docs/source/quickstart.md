@@ -34,7 +34,7 @@ dict1 = {
 		'currency': 'USD',
 		'amount': '42',
 		'quantity': 1, 
-		'paymentGateway': 'creditcard'
+		'paymentGateway': 'stripe'
 		'paymentMethod': 'creditcard'
 	},
 	'card': {
