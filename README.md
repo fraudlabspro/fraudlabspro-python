@@ -1,3 +1,5 @@
+![PyPI - Version](https://img.shields.io/pypi/v/fraudlabspro-python)
+
 # FraudLabs Pro Python SDK
 
 This Python module enables user to easily implement fraud detection feature into their solution using the API from https://www.fraudlabspro.com.
