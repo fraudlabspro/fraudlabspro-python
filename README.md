@@ -23,12 +23,11 @@ To learn more about installation, usage, and code examples, please visit the dev
 | -------------- |
 | creditcard     |
 | paypal         |
-| googlecheckout |
-| bitcoin        |
 | cod            |
-| moneyorder     |
-| wired          |
 | bankdeposit    |
+| giftcard       |
+| crypto         |
+| wired          |
 | others         |
 
 

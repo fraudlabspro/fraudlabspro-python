@@ -20,6 +20,7 @@ order_details_variables = {
 		'currency': 'USD',
 		'amount': '42',
 		'quantity': 1, 
+		'paymentGateway': 'creditcard',
 		'paymentMethod': 'creditcard'
 	},
 	'card': {
@@ -37,6 +38,8 @@ order_details_variables = {
 		'country': 'US',
 	},
 	'shipping': {
+		'firstName': 'Hector',
+		'lastName': 'Henderson',
 		'address': '4469 Chestnut Street',
 		'city'   : 'Tampa',
 		'state'  : 'FL',

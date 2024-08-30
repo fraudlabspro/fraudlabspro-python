@@ -85,6 +85,10 @@ class FraudValidation:
                 quantity = dictionary['order']['quantity']
             else:
                 quantity = ''
+            if 'paymentGateway' in dictionary['order']:
+                payment_gateway = dictionary['order']['paymentGateway']
+            else:
+                payment_gateway = ''
             if 'paymentMethod' in dictionary['order']:
                 payment_mode = dictionary['order']['paymentMethod']
             else:
@@ -99,6 +103,7 @@ class FraudValidation:
             currency = 'USD'
             amount = ''
             quantity = ''
+            payment_gateway = ''
             payment_mode = ''
             department = ''
         #  Credit card information
@@ -202,6 +207,14 @@ class FraudValidation:
             bill_country = ''
         #  Shipping information
         if 'shipping' in dictionary:
+            if 'firstName' in dictionary['shipping']:
+                ship_first_name = dictionary['shipping']['firstName']
+            else:
+                ship_first_name = ''
+            if 'lastName' in dictionary['shipping']:
+                ship_last_name = dictionary['shipping']['lastName']
+            else:
+                ship_last_name = ''
             if 'address' in dictionary['shipping']:
                 ship_addr = dictionary['shipping']['address']
             else:
@@ -223,6 +236,8 @@ class FraudValidation:
             else:
                 ship_country = ''
         else:
+            ship_first_name = ''
+            ship_last_name = ''
             ship_addr = ''
             ship_city = ''
             ship_state = ''
@@ -234,14 +249,16 @@ class FraudValidation:
                     'ip': ipaddr,
                     'format': 'json',
                     'source': 'sdk-python',
-                    'source_version': '3.0.0',
-                    'flp_check_sum': flp_check_sum,
+                    'source_version': '3.0.1',
+                    'flp_checksum': flp_check_sum,
                     #  order information
                     'user_order_id': user_order_id,
                     'user_order_memo': user_order_memo,
                     'currency': currency,
                     'amount': amount,
                     'quantity': quantity,
+                    'department': department,
+                    'payment_gateway': payment_gateway,
                     'payment_mode': payment_mode,
                     #  credit card information
                     'bin_no': card_bin,
@@ -263,6 +280,8 @@ class FraudValidation:
                     'bill_zip_code': bill_zip_code,
                     'bill_country': bill_country,
                     #  shipping information
+                    'ship_first_name': ship_first_name,
+                    'ship_last_name': ship_last_name,
                     'ship_addr': ship_addr,
                     'ship_city': ship_city,
                     'ship_state': ship_state,
@@ -309,7 +328,7 @@ class FraudValidation:
             notes = ''
         feedback_variables_list = {
             'key': self.apikey,
-            'source_version': '3.0.0',
+            'source_version': '3.0.1',
             'format': 'json',
             'id': transaction_id,
             'action': action,

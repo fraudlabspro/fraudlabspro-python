@@ -50,7 +50,7 @@ class SMSVerification:
         send_sms_variables_list = {
             'key': self.apikey,
             'source': 'sdk-python',
-            'source_version': '3.0.0',
+            'source_version': '3.0.1',
             'format': 'json',
             'tel': tel_no,
             'country_code': country_code,

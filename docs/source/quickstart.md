@@ -34,6 +34,7 @@ dict1 = {
 		'currency': 'USD',
 		'amount': '42',
 		'quantity': 1, 
+		'paymentGateway': 'creditcard'
 		'paymentMethod': 'creditcard'
 	},
 	'card': {
@@ -51,6 +52,8 @@ dict1 = {
 		'country': 'US',
 	},
 	'shipping': {
+		'firstName': 'Hector',
+		'lastName': 'Henderson',
 		'address': '4469 Chestnut Street',
 		'city'   : 'Tampa',
 		'state'  : 'FL',
