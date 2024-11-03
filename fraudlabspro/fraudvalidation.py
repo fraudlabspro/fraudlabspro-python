@@ -51,8 +51,8 @@ class FraudValidation:
         else:
             return ('The IP address is required.')
         #  flp_check_sum: Checksum for the device validation. Visit here to learn more: https://www.fraudlabspro.com/developer/javascript
-        if 'flp_check_sum' in dictionary:
-            flp_check_sum = dictionary['flp_check_sum']
+        if 'flp_checksum' in dictionary:
+            flp_check_sum = dictionary['flp_checksum']
         else:
             flp_check_sum = ''
         #  Order information
