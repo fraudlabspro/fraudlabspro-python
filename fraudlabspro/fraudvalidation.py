@@ -168,7 +168,7 @@ class FraudValidation:
                 if phone.isdigit():
                     user_phone = phone
                 else:
-                    user_phone = re.sub('\D','',phone)
+                    user_phone = re.sub(r'\D','',phone)
             else:
                 user_phone = ''
             if 'address' in dictionary['billing']:
@@ -372,7 +372,7 @@ class FraudValidation:
             'key': self.apikey,
             'format': 'json',
             'id': fraud_labs_pro_id,
-            'id_type': id_type,
+            # 'id_type': id_type,
         }
         url = 'https://api.fraudlabspro.com/v2/order/result'
         url_values = urllib.parse.urlencode(get_transaction_variable_list)
