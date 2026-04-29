@@ -1,12 +1,11 @@
 # import SDK to use the function
 from fraudlabspro.fraudvalidation import FraudValidation
 from fraudlabspro.smsverification import SMSVerification
+from fraudlabspro.payment import Payment
 
  # Configure your API key
 api_key = 'YOUR_API_KEY'
 
-# validation = fraudlabspro.fraudvalidation.FraudValidation(api_key)
-# validation = fraudlabspro.FraudValidation(api_key)
 fraud_validation = FraudValidation(api_key)
 
 """
@@ -94,4 +93,17 @@ verify_sms_variables = {
 }
 print(sms_validation.verify_sms(verify_sms_variables))
 
+payment_cls = Payment(api_key)
 
+"""
+ # Here is example of report the final payment status of an order.
+"""
+feedback_variables = {
+	'email': 'aaa@mailinator.com',
+    'status': '-',
+    'message': 'This is a test.'
+}
+
+result = payment_cls.feedback(feedback_variables)
+
+print(result)

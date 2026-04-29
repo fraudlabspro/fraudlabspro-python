@@ -171,6 +171,10 @@ class FraudValidation:
                     user_phone = re.sub(r'\D','',phone)
             else:
                 user_phone = ''
+            if 'billto' in dictionary['billing']:
+                bill_to = dictionary['billing']['billto']
+            else:
+                bill_to = ''
             if 'address' in dictionary['billing']:
                 bill_addr = dictionary['billing']['address']
             else:
@@ -200,6 +204,7 @@ class FraudValidation:
             email_domain = ''
             email_hash = ''
             user_phone = ''
+            bill_to = ''
             bill_addr = ''
             bill_city = ''
             bill_state = ''
@@ -274,6 +279,7 @@ class FraudValidation:
                     'email_hash': email_hash,
                     'email_domain': email_domain,
                     'user_phone': user_phone,
+                    'bill_to': bill_to,
                     'bill_addr': bill_addr,
                     'bill_city': bill_city,
                     'bill_state': bill_state,

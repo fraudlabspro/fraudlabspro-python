@@ -19,14 +19,14 @@ pip install fraudlabspro-python
 You can validate your order as below:
 
 ```python
- # import SDK to use the function
+# import SDK to use the function
 from fraudlabspro.fraudvalidation import FraudValidation
 
- # Configure your API key
+# Configure your API key
 api_key = 'YOUR_API_KEY'
 fraud_validation = FraudValidation(api_key)
 
- # Order Details
+# Order Details
 dict1 = {
 	'ip': '146.112.62.105',
 	'order': {
@@ -62,7 +62,7 @@ dict1 = {
 	}
 }
 
- # Sends the order details to FraudLabs Pro
+# Sends the order details to FraudLabs Pro
 result = fraud_validation.validate(dict1)
 ```
 
@@ -71,23 +71,23 @@ result = fraud_validation.validate(dict1)
 You can get the details of a transaction as below:
 
 ```python
- # import SDK to use the function
+# import SDK to use the function
 from fraudlabspro.fraudvalidation import FraudValidation
 
- # Configure your API key
+# Configure your API key
 api_key = 'YOUR_API_KEY'
 fraud_validation = FraudValidation(api_key)
 
- # Values to get transaction details
+# Values to get transaction details
 get_transaction_variables = {
 	'id': '20180705-WISXW2',
 }
 
- # Send the values to FraudLabs Pro
+# Send the values to FraudLabs Pro
 result = fraud_validation.get_transaction(get_transaction_variables)
 ```
 
-### Feedback
+### Feedback an order
 
 You can approve, reject or ignore a transaction as below:
 
@@ -95,11 +95,11 @@ You can approve, reject or ignore a transaction as below:
  # import SDK to use the function
 from fraudlabspro.fraudvalidation import FraudValidation
 
- # Configure your API key
+# Configure your API key
 api_key = 'YOUR_API_KEY'
 fraud_validation = FraudValidation(api_key)
 
- # Set feedback of the particular order
+# Set feedback of the particular order
 feedback_variables = {
 	'id': '20180705-WISXW2',
 	# Three actions available: APPROVE, REJECT, REJECT_BLACKLIST
@@ -118,11 +118,11 @@ You can send SMS verification for authentication purpose as below:
  # import SDK to use the function
 from fraudlabspro.smsverification import SMSVerification
  
- # Configure your API key
+# Configure your API key
 api_key = 'YOUR_API_KEY'
 sms_validation = SMSVerification(api_key)
 
- # Send SMS verification
+# Send SMS verification
 sms_verification_variables = {
 	'tel': '+123456789',
 	'country_code': 'US',
@@ -137,17 +137,41 @@ result = sms_validation.send_sms(sms_verification_variables)
 You can verify the OTP sent by Fraudlabs Pro SMS verification API as below:
 
 ```python
- # import SDK to use the function
+# import SDK to use the function
 from fraudlabspro.smsverification import SMSVerification
  
  # Configure your API key
 api_key = 'YOUR_API_KEY'
 sms_validation = SMSVerification(api_key)
 
- # Get SMS verification result
+# Get SMS verification result
 verify_sms_variables = {
 	'tran_id': 'UNIQUE_TRANS_ID',
 	'otp': 'OTP_RECEIVED',
 }
 result = sms_validation.verify_sms(verify_sms_variables)
+```
+
+### Report Payment Gateway Feedback
+
+You can report payment gateway feedback as below:
+
+```python
+# import SDK to use the function
+from fraudlabspro.payment import Payment
+
+# Configure your API key
+api_key = 'YOUR_API_KEY'
+payment_cls = Payment(api_key)
+
+# Set feedback of the particular order
+feedback_variables = {
+	'email': 'aaa@mailinator.com',
+    'status': '-',
+    'message': 'This is a test.'
+}
+
+result = payment_cls.feedback(feedback_variables)
+
+print(result)
 ```
