@@ -1,8 +1,8 @@
 # FraudLabs Pro Python API
 
-## FraudValidation Class
-```{py:class} FraudValidation(api_key)
-Initiate FraudValidation class with FraudLabs Pro API key.
+## Order Class
+```{py:class} Order(api_key)
+Initiate Order class with FraudLabs Pro API key.
 
 :param str api_key: (Required) FraudLabs Pro API key.
 ```

@@ -4,7 +4,7 @@
  # API key is required, and if you do not have an API key, you may sign up free
  # at at https://www.fraudlabspro.com
  #
- # @copyright 2024 FraudLabs Pro
+ # @copyright 2024-2026 FraudLabs Pro
  # https://www.fraudlabspro.com
 
 """
@@ -12,6 +12,8 @@
 import urllib.parse
 import urllib.request
 import json
+
+from .constants import MODULE_VERSION
 
 """
  # FraudLabsPro SMS Verification module.
@@ -50,7 +52,7 @@ class SMSVerification:
         send_sms_variables_list = {
             'key': self.apikey,
             'source': 'sdk-python',
-            'source_version': '3.0.1',
+            'source_version': MODULE_VERSION,
             'format': 'json',
             'tel': tel_no,
             'country_code': country_code,
@@ -75,7 +77,7 @@ class SMSVerification:
     """
      # Get Verification result.
      #
-     #Result will be return in json format.
+     # Result will be return in json format.
     """
     def verify_sms(self, verify_sms_variables):
         # if 'key' in verify_sms_variables:

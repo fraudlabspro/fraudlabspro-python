@@ -1,12 +1,12 @@
 # import SDK to use the function
-from fraudlabspro.fraudvalidation import FraudValidation
+from fraudlabspro.order import Order
 from fraudlabspro.smsverification import SMSVerification
 from fraudlabspro.payment import Payment
 
  # Configure your API key
 api_key = 'YOUR_API_KEY'
 
-fraud_validation = FraudValidation(api_key)
+order = Order(api_key)
 
 """
 # Here is an example to validate order details.
@@ -34,7 +34,7 @@ order_details_variables = {
 		'city': 'West Palm Beach',
 		'state': 'FL',
 		'postcode': '33401',
-		'country': 'US',
+		'country': 'US'
 	},
 	'shipping': {
 		'firstName': 'Hector',
@@ -43,10 +43,10 @@ order_details_variables = {
 		'city'   : 'Tampa',
 		'state'  : 'FL',
 		'postcode': '33602',
-		'country': 'US',
+		'country': 'US'
 	}
 }
-print(fraud_validation.validate(order_details_variables))
+print(order.validate(order_details_variables))
 
 """
 # Here is an example to get transaction details.
@@ -55,21 +55,21 @@ print(fraud_validation.validate(order_details_variables))
 # type is id type, which define either the id is FraudLabsPrp::FLP_ID or FraudLabsPro::ORDER_ID.
 """
 get_transaction_variables = {
-	'id': '20180705-WISXW2',
+	'id': 'THE_FRAUDLABSPRO_ID',
 	# 'id_type': 'FraudLabsPro::FLP_ID' # No longer supported in v2
 }
-print(fraud_validation.get_transaction(get_transaction_variables))
+print(order.get_transaction(get_transaction_variables))
 
 """
  # Here is example of send feecback of either approve or reject this particular order.
 """
 feedback_variables = {
-	'id': '20180705-WISXW2',
+	'id': 'THE_FRAUDLABSPRO_ID',
 	# Three actions available: APPROVE, REJECT, REJECT_BLACKLIST
 	'action': 'APPROVE',
 	'notes': 'This is for testing purpose.',
 }
-print(fraud_validation.feedback(feedback_variables))
+print(order.feedback(feedback_variables))
 
 sms_validation = SMSVerification(api_key)
 
@@ -77,7 +77,7 @@ sms_validation = SMSVerification(api_key)
  # Here is example of verify the valid order by send the SMS to customer.
 """
 sms_verification_variables = {
-	'tel': '+15616288674',
+	'tel': '+123456789',
 	'country_code': 'US',
 	'mesg': 'Your OTP for the transaction is <otp>.',
 	'otp_timeout': 3600,

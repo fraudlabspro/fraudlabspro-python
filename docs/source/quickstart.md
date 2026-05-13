@@ -20,11 +20,11 @@ You can validate your order as below:
 
 ```python
 # import SDK to use the function
-from fraudlabspro.fraudvalidation import FraudValidation
+from fraudlabspro.order import Order
 
 # Configure your API key
 api_key = 'YOUR_API_KEY'
-fraud_validation = FraudValidation(api_key)
+order = Order(api_key)
 
 # Order Details
 dict1 = {
@@ -34,7 +34,7 @@ dict1 = {
 		'currency': 'USD',
 		'amount': '42',
 		'quantity': 1, 
-		'paymentGateway': 'stripe'
+		'paymentGateway': 'stripe',
 		'paymentMethod': 'creditcard'
 	},
 	'card': {
@@ -49,7 +49,7 @@ dict1 = {
 		'city': 'West Palm Beach',
 		'state': 'FL',
 		'postcode': '33401',
-		'country': 'US',
+		'country': 'US'
 	},
 	'shipping': {
 		'firstName': 'Hector',
@@ -58,12 +58,13 @@ dict1 = {
 		'city'   : 'Tampa',
 		'state'  : 'FL',
 		'postcode': '33602',
-		'country': 'US',
+		'country': 'US'
 	}
 }
 
 # Sends the order details to FraudLabs Pro
-result = fraud_validation.validate(dict1)
+result = order.validate(dict1)
+print(result)
 ```
 
 ### Get Transaction
@@ -72,19 +73,19 @@ You can get the details of a transaction as below:
 
 ```python
 # import SDK to use the function
-from fraudlabspro.fraudvalidation import FraudValidation
+from fraudlabspro.order import Order
 
 # Configure your API key
 api_key = 'YOUR_API_KEY'
-fraud_validation = FraudValidation(api_key)
+order = Order(api_key)
 
 # Values to get transaction details
 get_transaction_variables = {
-	'id': '20180705-WISXW2',
+	'id': <fraudlabspro_id>
 }
 
 # Send the values to FraudLabs Pro
-result = fraud_validation.get_transaction(get_transaction_variables)
+result = order.get_transaction(get_transaction_variables)
 ```
 
 ### Feedback an order
@@ -93,21 +94,21 @@ You can approve, reject or ignore a transaction as below:
 
 ```python
  # import SDK to use the function
-from fraudlabspro.fraudvalidation import FraudValidation
+from fraudlabspro.order import Order
 
 # Configure your API key
 api_key = 'YOUR_API_KEY'
-fraud_validation = FraudValidation(api_key)
+order = Order(api_key)
 
 # Set feedback of the particular order
 feedback_variables = {
-	'id': '20180705-WISXW2',
+	'id': <fraudlabspro_id>,
 	# Three actions available: APPROVE, REJECT, REJECT_BLACKLIST
 	'action': 'APPROVE',
-	'notes': 'This is for testing purpose.',
+	'notes': 'This is for testing purpose.'
 }
 
-result = fraud_validation.feedback(feedback_variables)
+result = order.feedback(feedback_variables)
 ```
 
 ### Send SMS Verification
