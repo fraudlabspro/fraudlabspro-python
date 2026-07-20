@@ -14,7 +14,7 @@ setuptools.setup(
 	url="https://www.fraudlabspro.com",
 	packages=setuptools.find_packages(),
 	tests_require=['pytest>=3.0.6'],
-	classifiers=(
+	classifiers=[
 		"Development Status :: 5 - Production/Stable",
 		"Intended Audience :: Developers",
 		"Topic :: Software Development :: Libraries :: Python Modules",
@@ -27,7 +27,6 @@ setuptools.setup(
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
-		"License :: OSI Approved :: MIT License",
 		"Operating System :: OS Independent",
-	),
+	],
 )
