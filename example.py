@@ -15,12 +15,13 @@ order = Order(api_key)
 order_details_variables = {
 	'ip': '146.112.62.105',
 	'order': {
-		'order_id': '67398', 
+		'order_id': '67398',
 		'currency': 'USD',
-		'amount': '42',
-		'quantity': 1, 
-		'paymentGateway': 'creditcard',
-		'paymentMethod': 'creditcard'
+		'amount': '119.98',
+		'quantity': 2,
+		'paymentGateway': 'stripe',
+		'paymentMethod': 'creditcard',
+		'items': '[{"sku": "SKU-1001","quantity": 1,"price": 99.99,"type": "physical","name": "Wireless Headphones","purchase_type": "one-time purchase"},{"sku": "SKU-2005","quantity": 1,"price": 19.99,"type": "downloadable","name": "Country List"}]'
 	},
 	'card': {
 		'number': '4556553172971283'

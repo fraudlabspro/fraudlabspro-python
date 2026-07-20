@@ -99,6 +99,10 @@ class Order:
                 department = dictionary['order']['department']
             else:
                 department = ''
+            if 'items' in dictionary['order']:
+                items = dictionary['order']['items']
+            else:
+                items = ''
         else:
             user_order_id = ''
             user_order_memo = ''
@@ -108,6 +112,7 @@ class Order:
             payment_gateway = ''
             payment_mode = ''
             department = ''
+            items = ''
         #  Credit card information
         if 'card' in dictionary:
             if 'number' in dictionary['card']:
@@ -267,6 +272,7 @@ class Order:
                     'department': department,
                     'payment_gateway': payment_gateway,
                     'payment_mode': payment_mode,
+                    'items': items,
                     #  credit card information
                     'bin_no': card_bin,
                     'card_hash': card_hash,
